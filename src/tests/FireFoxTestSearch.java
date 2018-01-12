@@ -1,5 +1,7 @@
 package tests;
 
+import java.util.concurrent.TimeUnit;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +20,7 @@ public class FireFoxTestSearch {
 		        //File appDir = new File(classpathRoot, "../../");
 		    	System.setProperty("webdriver.gecko.driver","D:\\work\\testing\\auto.ru\\geckodriver.exe");
 		    	driver = new FirefoxDriver();
+		    	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		    	driver.get("https://auto.ru/");
 
 		    }
