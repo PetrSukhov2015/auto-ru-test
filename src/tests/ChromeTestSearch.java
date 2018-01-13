@@ -6,20 +6,18 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import pages.MainPage;
 
-public class FireFoxTestSearch {
+public class ChromeTestSearch {
 	
 	
 		 private WebDriver driver;
 		 
 		    @Before
 		    public void setUp() throws Exception {
-		        //File classpathRoot = new File(System.getProperty("user.dir"));
-		        //File appDir = new File(classpathRoot, "../../");
-		    	System.setProperty("webdriver.gecko.driver","D:\\work\\testing\\auto.ru\\geckodriver.exe");
-		    	driver = new FirefoxDriver();
+		        System.setProperty("webdriver.chrome.driver", "D:\\work\\testing\\auto.ru\\chromedriver.exe");
+		    	driver = new ChromeDriver();
 		    	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		    	driver.get("https://auto.ru/");
 
