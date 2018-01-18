@@ -18,8 +18,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
+import io.appium.java_client.PressesKeyCode;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
+import pages.AndroidView;
 
 
 public class AndroidTestSearch {
@@ -37,6 +41,9 @@ public class AndroidTestSearch {
 		        capabilities.setCapability("platformVersion", "4.4");
 		        capabilities.setCapability("app", app.getAbsolutePath());
 		        capabilities.setCapability("appPackage", "ru.auto.ara");
+		        
+		        //capabilities.setCapability("unicodeKeyboard", "true");                                     
+		        //capabilities.setCapability("resetKeyboard", "true");
 		        //capabilities.setCapability("appActivity", ".ApiDemos");
 		        driver = new AndroidDriver(new URL("http://0.0.0.0:4723/wd/hub"), capabilities);
 		        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -50,26 +57,17 @@ public class AndroidTestSearch {
 		 
 		    @Test
 		    public void search(){
-		    	//System.out.println("i am here");
-		        WebElement el = driver.findElementByClassName("android.widget.TextView");
-		        el.click();
-		        WebElement el2 = driver.findElementByClassName("android.widget.EditText");
-		        el2.sendKeys("Ford Focus");
-		        //el.sendKeys(arg0);
-		        //WebElement res = driver.findElementByClassName("android.widget.EditText");
-		        //Assert.assertEquals("Ford", res.getText());
-		    	/*
-		        WebElement el = driver.findElement(By.xpath(".//*[@text='Animation']"));
-		 
-		        Assert.assertEquals("Animation", el.getText());
-		        el = driver.findElementByClassName("android.widget.TextView");
-		        Assert.assertEquals("API Demos", el.getText());
-		        el = driver.findElement(By.xpath(".//*[@text='App']"));
-		        el.click();
-		        List<WebElement> els = driver.findElementsByClassName("android.widget.TextView");
-		        Assert.assertEquals("Activity", els.get(2).getText());
+		    	MobileElement el1 = (MobileElement) driver.findElementByClassName("android.widget.ImageView");
+			    el1.click();		        
 		        
-		    	*/
+		    	MobileElement el2 = (MobileElement) driver.findElementById("ru.auto.ara:id/do_search_btn");
+		        System.out.println(el2.getText());
+		        el2.click();
+		        MobileElement el3 = (MobileElement) driver.findElementById("ru.auto.ara:id/name");
+		        System.out.println(el3.getText());
+		        //AndroidView ap = new AndroidView(driver);
+		    	//ap.smokeTestReasrch();
+		    	
 		    }
 	
 }
